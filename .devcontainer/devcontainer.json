@@ -1,0 +1,37 @@
+{
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	"runArgs": 
+	    [ 
+		"--device", "nvidia.com/gpu=all"   // working on nixos
+		//"--runtime", "nvidia", "--gpus", "all"], //working in codevm
+		],   
+	"features": {
+		"ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
+			"packages": "rlwrap"
+		},
+		"ghcr.io/va-h/devcontainers-features/uv:1": {},
+//		"ghcr.io/wxw-matt/devcontainer-features/command_runner:0.5.0": {
+//                        "command1": "bash < <(curl -s https://raw.githubusercontent.com/clojure-lsp/clojure-lsp/master/install)"
+//                },
+		"ghcr.io/prulloac/devcontainer-features/ollama:1": {"pull": "gemma3:4b"},				
+		"ghcr.io/devcontainers/features/nvidia-cuda:2.0.0": {"installToolkit": "true"}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"betterthantomorrow.calva"
+			]
+		}
+	},
+
+	"onCreateCommand":
+	{ //"ide-setup": ["bash", "-c", "if [ -f \"/home/vscode/.setup-ide/setup-ide.sh\" ]; then /home/vscode/.setup-ide/setup-ide.sh; fi"],
+	  "prepare": "./.devcontainer/setup.sh"
+      
+
+	}
+}
