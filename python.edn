@@ -1,4 +1,4 @@
-{:python-version "3.10.16" ; working
+{:python-version "3.13.7" 
  :python-deps ["langextract"]
  :python-executable ".venv/bin/python"
  :pre-initialize-fn libpython-clj2.python.uv/sync-python-setup!}
